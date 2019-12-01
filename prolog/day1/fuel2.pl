@@ -11,7 +11,7 @@ mass_line(FStrm, Line, [M|MS]) :-
 
 read_masses(mass(M), FName) :- file_masses(FName, Masses), member(M, Masses).
 
-test() :- fuel_needed("fuelfile.txt", Fuel), Fuel == 51316.
+test() :- fuel_needed("../../inputs/day1/testinp", Fuel), Fuel == 51316.
 
 fuel(0, mass(0)) :- !.
 fuel(F, mass(M)) :-
