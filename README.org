@@ -1,0 +1,9 @@
+* Advent Of Code -- 2019
+
+This repo contains various implementations of the challenges for the
+Advent Of Code (https://adventofcode.com) for 2019.
+
+The solution types are represented by the top-level directories, with
+a day subdirectory for each solution, and a ~run.sh~ that can be
+executed in each directory to run that day's implementation.
+
