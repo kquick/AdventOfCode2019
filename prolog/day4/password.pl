@@ -17,14 +17,12 @@ password2(Min, Max, Password) :-
     between(D4, 9, D5),
     Inp = [D1, D2, D3, D4, D5],
     nth0(DupIdx, Inp, DD),
-    
-    succ(DupIdx, AfterDup),
-    ((length(Inp, AfterDup)) ;
-     \+ nth0(AfterDup, Inp, DD)),
 
-    ((0 =:= DupIdx) ;
-     (succ(BeforeDup, DupIdx),
-      \+ nth0(BeforeDup, Inp, DD))),
+    % Not followed by the same digit
+    succ(DupIdx, AfterDup), (length(Inp, AfterDup) ; \+ nth0(AfterDup, Inp, DD)),
+
+    % Not preceeded by the same digit
+    (0 =:= DupIdx ; (succ(BeforeDup, DupIdx), \+ nth0(BeforeDup, Inp, DD))),
     
     nth0(DupIdx, PasswordList, DD, Inp),
     intval(PasswordList, 6, Password),
