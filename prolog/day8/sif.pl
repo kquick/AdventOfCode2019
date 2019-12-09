@@ -121,7 +121,5 @@ render_layers([]).
 
 render_layer([V|VS]) :-
     (V =:= 1 -> format('#') ; format(' ')),
-    %% number_string(V, S),
-    %% format('~s',[S]),
     render_layer(VS).
 render_layer([]) :- format('~n').
