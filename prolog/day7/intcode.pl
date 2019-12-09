@@ -133,17 +133,17 @@ run_opcode(8, Modes,
 
 % ----------------------------------------------------------------------
 
-test13() :- thrusters('../../inputs/day7/testinp1', _, 43210).
-test14() :- thrusters('../../inputs/day7/testinp2', _, 54321).
-test15() :- thrusters('../../inputs/day7/testinp3', _, 65210).
-test16() :- feed_thrusters('../../inputs/day7/testinp4', [5,6,7,8,9], 139629729).
-test17 :- feed_thrusters('../../inputs/day7/testinp5', [5,6,7,8,9], 18216).
+test13() :- thrusters('../../inputs/day7/testinp1', 43210).
+test14() :- thrusters('../../inputs/day7/testinp2', 54321).
+test15() :- thrusters('../../inputs/day7/testinp3', 65210).
+test16() :- feed_thrusters('../../inputs/day7/testinp4', 139629729).
+test17 :- feed_thrusters('../../inputs/day7/testinp5', 18216).
     
 test() :- test13, test14, test15, test16, test17.
 
 % ----------------------------------------------------------------------
 
-thrusters(FName, _ValidPhases, Result) :-
+thrusters(FName, Result) :-
     read_intcode(Program, FName),
     findall(Output, amplifiers(Program, Output), Outputs),
     max_member(Result, Outputs).
@@ -159,7 +159,7 @@ phased_amps(Program, Output, PhaseA, PhaseB, PhaseC, PhaseD, PhaseE) :-
     run_program(Program, [PhaseD, AmpC], _, [AmpD|_]),
     run_program(Program, [PhaseE, AmpD], _, [Output|_]).
 
-feed_thrusters(FName, _ValidPhases, Result) :-
+feed_thrusters(FName, Result) :-
     read_intcode(Program, FName),
     findall(Output, feedback_amplifiers(Program, Output), Outputs),
     max_member(Result, Outputs).
